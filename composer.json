@@ -1,0 +1,40 @@
+{
+    "name": "super-admin-ext/page-designer",
+    "description": "Page designer for open admin",
+    "type": "library",
+    "keywords": [
+        "super-admin",
+        "page",
+        "designer",
+        "free",
+        "random"
+    ],
+    "homepage": "https://github.com/super-admin-org/page-designer",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "super-admin",
+            "email": "info@super-admin.org"
+        }
+    ],
+    "require": {
+        "php": ">=7.0.0",
+        "super-admin-ext/ckeditor": "~1.0",
+        "super-admin-org/super-admin": "~1.0.14"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~6.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "SuperAdmin\\Admin\\PageDesigner\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "SuperAdmin\\Admin\\PageDesigner\\PageDesignerServiceProvider"
+            ]
+        }
+    }
+}
