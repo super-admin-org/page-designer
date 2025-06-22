@@ -3,8 +3,8 @@ PageDesigner for Super-Admin
 Freely position items on a page and edit their content.
 
 [![StyleCI](https://styleci.io/repos/503893269/shield?branch=main)](https://styleci.io/repos/503893269)
-[![Packagist](https://img.shields.io/github/license/super-admin-org/page-designer.svg?style=flat-square&color=brightgreen)](https://packagist.org/packages/super-admin-ext/page-designer)
-[![Total Downloads](https://img.shields.io/packagist/dt/super-admin-ext/page-designer.svg?style=flat-square)](https://packagist.org/packages/super-admin-ext/page-designer)
+[![Packagist](https://img.shields.io/github/license/super-admin-org/page-designer.svg?style=flat-square&color=brightgreen)](https://packagist.org/packages/super-admin-org/page-designer)
+[![Total Downloads](https://img.shields.io/packagist/dt/super-admin-org/page-designer.svg?style=flat-square)](https://packagist.org/packages/super-admin-org/page-designer)
 [![Pull request welcome](https://img.shields.io/badge/pr-welcome-green.svg?style=flat-square)]()
 
 
@@ -18,7 +18,7 @@ Freely position items on a page and edit their content.
 ### 1) Terminal
 
 ```
-$ composer require super-admin-ext/page-designer
+$ composer require super-admin-org/page-designer
 
 $ php artisan admin:import page-designer
 

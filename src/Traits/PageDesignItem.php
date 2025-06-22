@@ -12,7 +12,7 @@ trait PageDesignItem
     public function initPageDesignItem()
     {
         $this->hook('alterForm', function ($scope, $form) {
-            Admin::css('/vendor/super-admin-ext/page-designer/css/page-designer-modal.css', false);
+            Admin::css('/vendor/super-admin-org/page-designer/css/page-designer-modal.css', false);
             $form = $this->addPageDesigner($form);
 
             return $form;

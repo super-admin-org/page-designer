@@ -17,7 +17,7 @@ class PageDesignerServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->publishes(
                 [
-                    __DIR__.'/../resources/assets/'  => public_path('vendor/super-admin-ext/page-designer/'),
+                    __DIR__.'/../resources/assets/'  => public_path('vendor/super-admin-org/page-designer/'),
                     __DIR__.'/../resources/example/' => base_path(''),
                 ],
                 'page-designer'

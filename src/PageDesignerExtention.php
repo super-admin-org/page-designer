@@ -19,12 +19,12 @@ class PageDesignerExtention extends Extension
 
         Admin::extend('page-designer', __CLASS__);
 
-        Admin::css('/vendor/super-admin-ext/page-designer/css/page-designer.css');
-        Admin::css('/vendor/super-admin-ext/page-designer/js/resizeable.css');
+        Admin::css('/vendor/super-admin-org/page-designer/css/page-designer.css');
+        Admin::css('/vendor/super-admin-org/page-designer/js/resizeable.css');
 
-        Admin::js('/vendor/super-admin-ext/page-designer/js/resizeable.js');
-        Admin::js('/vendor/super-admin-ext/page-designer/js/interact.min.js');
-        Admin::js('/vendor/super-admin-ext/page-designer/js/page-designer.js');
+        Admin::js('/vendor/super-admin-org/page-designer/js/resizeable.js');
+        Admin::js('/vendor/super-admin-org/page-designer/js/interact.min.js');
+        Admin::js('/vendor/super-admin-org/page-designer/js/page-designer.js');
     }
 
     /**
