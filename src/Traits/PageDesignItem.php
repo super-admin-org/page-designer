@@ -30,7 +30,7 @@ trait PageDesignItem
     {
         $content->addBodyClass('hide-nav  white-bg');
 
-        return parent::show($content);
+        return parent::show($id, $content);
     }
 
     public function edit($id, Content $content)

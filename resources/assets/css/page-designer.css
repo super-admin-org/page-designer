@@ -22,8 +22,8 @@
 }
 
 .pds .item.selected{
-    box-shadow:  0 0 6pt 1pt var(--bs-success);
-    border-color: var(--bs-success)
+    box-shadow:  0 0 6pt 1pt var(--sa-success, var(--bs-success));
+    border-color: var(--sa-success, var(--bs-success))
 }
 
 .pds .item.drop{

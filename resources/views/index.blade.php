@@ -1,12 +1,12 @@
 <div class="row pds" id="pds-app">
     <div class="col-md-9" style="width:1011px !important;min-width:1011px;">
 
-        <div class="card-header with-border d-flex">
+        <div class="card-header d-flex">
             <h3 class="card-title">Page Designer</h3>
             <div id="tips" class="ms-auto"></div>
         </div>
 
-        <div class="card-body no-padding" style="position:relative;">
+        <div class="card-body p-0" style="position:relative;">
             <div class="pt-2 pb-4">
                 <a class="btn btn-light me-2" onclick="window.addHeight(100,'top');return false;">add 100px</a>
                 <a class="btn btn-light me-2" onclick="window.addHeight(200,'top');return false;">add 200px</a>
@@ -28,11 +28,11 @@
     </div>
 
     <div class="col-md-3">
-        <div class="card card-solid">
-            <div class="card-header with-border">
+        <div class="card">
+            <div class="card-header">
                 <h3 class="card-title">Elements (Drag)</h3>
             </div>
-            <div class="card-body no-padding" id="page-drop">
+            <div class="card-body p-0" id="page-drop">
                 <div class="position-sticky sticky-top" style="padding-top:4.1rem;">
                 @foreach($item_types as $item_type)
                 <div class="item drop {{$item_type['type']}}" draggable="true" data-type="{{$item_type['type']}}"><span class="icon {{$item_type['icon']}}"></span>{{$item_type['title']}} </div>

@@ -1,34 +1,31 @@
-PageDesigner for Super-Admin
+PageDesigner for Super Admin
 ============================
-Freely position items on a page and edit their content.
 
-[![StyleCI](https://styleci.io/repos/503893269/shield?branch=main)](https://styleci.io/repos/503893269)
-[![Packagist](https://img.shields.io/github/license/super-admin-org/page-designer.svg?style=flat-square&color=brightgreen)](https://packagist.org/packages/super-admin-org/page-designer)
-[![Total Downloads](https://img.shields.io/packagist/dt/super-admin-org/page-designer.svg?style=flat-square)](https://packagist.org/packages/super-admin-org/page-designer)
-[![Pull request welcome](https://img.shields.io/badge/pr-welcome-green.svg?style=flat-square)]()
+Freely position items (text, images, video, galleries, embeds) on a page and edit their content, with a `pagedesigner` form field and a front-end renderer.
 
+**Documentation:** https://super-admin.org/laravel/extension-page-designer/
 
-## Screenshot
-
-![extention-page-designer](https://user-images.githubusercontent.com/86517067/173943033-9234fe5a-273f-4383-84a1-d2f38120c3bf.png)
-
+Requirements: PHP 8.0+, Laravel 8 – 13, Super Admin 1.x, [super-admin-org/ckeditor](https://github.com/super-admin-org/ckeditor) (text blocks).
 
 ## Installation
 
-### 1) Terminal
+### 1) Install and publish
 
-```
-$ composer require super-admin-org/page-designer
-
-$ php artisan admin:import page-designer
-
-$ php artisan vendor:publish --tag=page-designer
-
-$ php artisan migrate
+```bash
+composer require super-admin-org/page-designer
+php artisan admin:import page-designer
+php artisan vendor:publish --tag=page-designer    # assets + example controllers, models, migrations, views
+php artisan migrate
 ```
 
-### 2) Add Routes
-Add admin routes in App/Admin/routes.php
+The example files are published into `app/Admin/Controllers`, `app/Admin/Traits`, `app/Http/Controllers`, `app/Models`, `database/migrations` and `resources/views`. Publish them separately with `--tag=page-designer-assets` and `--tag=page-designer-example`. Review the result in Git before committing.
+
+Until you add the routes below, `/admin/page-designer` shows a checklist of the remaining steps.
+
+### 2) Add routes
+
+`app/Admin/routes.php`:
+
 ```php
 $router->resource('page-designer', PageDesignerController::class);
 $router->resource('page-designer-images', PageDesignerImagesController::class);
@@ -38,38 +35,44 @@ $router->resource('page-designer-inline-galleries', PageDesignerInlineGalleryCon
 $router->resource('page-designer-embeds', PageDesignerEmbedController::class);
 ```
 
-Add front-end routes in routes/web.php
+`routes/web.php`:
+
 ```php
 use App\Http\Controllers\PageDesignerController;
 
 Route::get('/page/{id}', [PageDesignerController::class, 'index'])->name('page-designer');
 ```
 
-### 3) Check it out
-App\Controllers\PageDesignerController.php
+### 3) Use it
 
-Now in the form section you see.
+In a form:
+
 ```php
-$form->pagedesigner('data', __('pageDesign'));
+$form->pagedesigner('data', __('Page design'));
+
+// Snap grid in pixels (default 40)
+$form->pagedesigner('data')->snap(30);
 ```
 
-##### For the front-end:
-Go to your-app-url/page/{id} and see how it look
-you can alter the look by changing resources/views/page_designer.blade.php
+Open `/page/{id}` to see the rendered page; change its look in `resources/views/page_designer.blade.php`.
 
+## Adding new items
 
-## Options
+The designer looks for controllers that use the `PageDesignItem` trait in `admin.route.namespace` (default `App\Admin\Controllers`). To list them explicitly instead:
+
 ```php
-// set snap
-$form->pagedesigner('data', __('pageDesign'))->snap(30);
+// config/admin.php
+'extensions' => [
+    'page-designer' => [
+        'item_controllers' => [
+            App\Admin\Controllers\PageDesignerTextController::class,
+            App\Admin\Controllers\PageDesignerQuoteController::class,
+        ],
+    ],
+],
 ```
 
-## Adding new items to the PageDesigner
-The PageDesigner automaticly scans the `Admin/Controllers` directory to see if there are controller with `PageDesignItem` trait.
-
-You can generate an AdminController like you normaly would (Tip: use the helper plugin), then you can add the following code below.
-
-Lets say you like an quote item to add to your PageDesigner after you create the controller. Alter it to look like this:
+A quote item:
 
 ```php
 use SuperAdmin\Admin\PageDesigner\Traits\PageDesignItem;
@@ -86,30 +89,40 @@ class PageDesignerQuoteController extends AdminController
     public static function pageDesign()
     {
         return [
-            'parent_field'=> 'page_id',
-            'type'        => 'quote',
-            'title'       => 'quote',
-            'icon'        => 'icon-quote-right',
-            'model'       => "\App\Models\PageDesignerQuote",
+            'parent_field' => 'page_id',
+            'type'         => 'quote',
+            'title'        => 'quote',
+            'icon'         => 'icon-quote-right',
+            'model'        => \App\Models\PageDesignerQuote::class,
+            // 'path'      => 'page-designer-quotes',   // admin resource path; defaults to the plural of the model name
         ];
     }
 
-    // this part renders the content part of the item
-    // the rendering on the frond-end is seperate, but offcourse you can let them share styles
+    // Renders the item's content in the editor (the front end renders separately).
     public static function pageDesignScripts()
     {
         return <<<'JS'
-            // use the type as writen above + 'SetContent'
-            window.quoteSetContent = function(data,current_content){
-                current_content.innerHTML = '<h2>Quote: '+data.quote+'</h2>';
+            // the type as written above + 'SetContent'
+            window.quoteSetContent = function (data, current_content) {
+                current_content.textContent = 'Quote: ' + data.quote;
             };
         JS;
     }
-
-    ...
+}
 ```
 
+## Upgrading from 1.x
+
+- The class `PageDesignerExtention` is now `PageDesignerExtension`; the old name still works.
+- The package no longer registers `admin/page-designer` to a controller it did not ship (that broke `php artisan route:list`).
+
+## Tests
+
+```bash
+composer install
+composer test
+```
 
 License
-------------
+-------
 Licensed under [The MIT License (MIT)](LICENSE).
