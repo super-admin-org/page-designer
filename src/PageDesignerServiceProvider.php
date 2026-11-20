@@ -34,7 +34,7 @@ class PageDesignerServiceProvider extends ServiceProvider
                 $example.'/resources/views'       => resource_path('views'),
             ];
 
-            $this->publishes($assets, 'page-designer-assets');
+            $this->publishes($assets, ['page-designer-assets', 'laravel-assets']);
             $this->publishes($exampleFiles, 'page-designer-example');
             $this->publishes($assets + $exampleFiles, 'page-designer');
         }

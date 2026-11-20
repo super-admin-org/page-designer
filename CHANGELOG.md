@@ -13,6 +13,7 @@
 
 ### Added
 
+- Assets (not the example files) are also tagged `laravel-assets`, so Laravel apps republish them after every `composer update`.
 - `item_controllers` option to list block controllers explicitly; discovery otherwise follows `admin.route.namespace` and `admin.directory`.
 - Publish tags `page-designer-assets` and `page-designer-example` (`page-designer` still publishes both).
 - Tests on Orchestra Testbench.
