@@ -1,6 +1,19 @@
 # Changelog
 
-## Unreleased (2.0.0)
+## v1.1.0 - 2026-11-20
+
+### Changed
+
+- Works with super-admin 2.x: the package now requires `super-admin-org/super-admin` `^1.0|^2.0`. Earlier versions required `^1.0`, so Composer could not install them next to super-admin v2.0.0.
+- Package homepage and documentation: https://super-admin.org/laravel/extension-page-designer/
+
+## v1.0.5 - 2026-11-20
+
+### Added
+
+- Assets (not the example files) are also tagged `laravel-assets`, so Laravel apps republish them after every `composer update`.
+
+## v1.0.4 - 2026-11-20
 
 ### Fixed
 
@@ -13,7 +26,6 @@
 
 ### Added
 
-- Assets (not the example files) are also tagged `laravel-assets`, so Laravel apps republish them after every `composer update`.
 - `item_controllers` option to list block controllers explicitly; discovery otherwise follows `admin.route.namespace` and `admin.directory`.
 - Publish tags `page-designer-assets` and `page-designer-example` (`page-designer` still publishes both).
 - Tests on Orchestra Testbench.

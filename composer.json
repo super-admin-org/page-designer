@@ -9,7 +9,12 @@
         "free",
         "random"
     ],
-    "homepage": "https://github.com/super-admin-org/page-designer",
+    "homepage": "https://super-admin.org/laravel/extension-page-designer/",
+    "support": {
+        "docs": "https://super-admin.org/laravel/extension-page-designer/",
+        "issues": "https://github.com/super-admin-org/page-designer/issues",
+        "source": "https://github.com/super-admin-org/page-designer"
+    },
     "license": "MIT",
     "authors": [
         {
@@ -21,7 +26,7 @@
         "php": "^8.0",
         "illuminate/support": "^8.0|^9.0|^10.0|^11.0|^12.0|^13.0",
         "super-admin-org/ckeditor": "^1.0",
-        "super-admin-org/super-admin": "^1.0"
+        "super-admin-org/super-admin": "^1.0|^2.0"
     },
     "require-dev": {
         "orchestra/testbench": "^6.0|^7.0|^8.0|^9.0|^10.0|^11.0",
